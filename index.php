@@ -23,10 +23,10 @@
                     </span>
                     <ul class="flex space-x-10 text-white ml-10">
                         <li>
-                            <a href="index.html"> Home </a>
+                            <a href="index.php"> Home </a>
                         </li>
                         <li>
-                            <a href="rentals.html"> Rentals </a>
+                            <a href="rentals.php"> Rentals </a>
                         </li>
                     </ul>
                 </div>
@@ -34,16 +34,17 @@
                 <div class="">
 
                     <button class="bg-white rounded-md p-2 w-24">
-                        <a href="profile.html"> Profile </a>
+                        <a href="profile.php"> Profile </a>
                     </button>
 
                     <button class="bg-white rounded-md p-2 w-24 ml-2">
-                        <a href="signin.html"> Logout </a>
+                        <a href="signin.php"> Logout </a>
                     </button>
                 </div>
             </div>
 
         </nav>
+        
     </header>
 
     <main class="container mx-auto"> <!---------- Body ---------------->
@@ -65,10 +66,10 @@
             <form class="text-white flex justify-around my-3">
 
                 <button class="bg-blue-400 p-2 rounded w-28">
-                    <a href="cardetails.html"> Details </a>
+                    <a href="cardetails.php"> Details </a>
                 </button>
                 <button class="bg-green-400 p-2 rounded w-28">
-                    <a href="rent.html"> Rent </a>
+                    <a href="rent.php"> Rent </a>
                 </button>
 
             </form>
