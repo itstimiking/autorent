@@ -1,3 +1,12 @@
+<?php
+
+    require_once './scripts/dbconnect.php';
+
+    $query = "SELECT * FROM cars";
+
+    $cars = $autorentdb->query($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,68 +23,49 @@
 
             <!------------- Nav section ---------->
 
-            <nav class="w-full h-20 bg-blue-400">
+            <?php include './incl/nav.php' ?>
 
-                <div class="container mx-auto flex h-20 items-center justify-between">
-                    <div class="flex items-center">
-                        <span class="text-3xl text-white font-bold">
-                            AutoRent
-                        </span>
-                        <ul class="flex space-x-10 text-white ml-10">
-                            <li>
-                                <a href="index.php"> Home </a>
-                            </li>
-                            <li>
-                                <a href="rentals.php"> Rentals </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="">
-
-                        <button class="bg-white rounded-md p-2 w-24">
-                            <a href="profile.php"> Profile </a>
-                        </button>
-
-                        <button class="bg-white rounded-md p-2 w-24 ml-2">
-                            <a href="signin.php"> Logout </a>
-                        </button>
-                    </div>
-                </div>
-
-            </nav>
-            
         </header>
 
-        <main class="container mx-auto"> <!---------- Body ---------------->
+        <main class="container mx-auto flex flex-wrap justify-between"> <!---------- Body ---------------->
 
-            <div class="sm:my-10 sm:ml-5 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 flex flex-col p-5 border">
-                
-                <!-- Car Advert Box when not rented yet -->
+            <?php while($car = $cars->fetch_assoc()):?>
+                <div class="sm:my-10 sm:ml-5 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 flex flex-col p-5 border">
+            
+                    <!-- Car Advert Box when not rented yet -->
+    
+                    <h1 class="text-center text-2xl font-bold">
+                        <?php echo $car['name'] ;?>
+                    </h1>
+    
+                    <img src="<?php echo $car['pic'] ?>" class="w-full rounded" alt="car image">
+    
+                    <p class="text-green-500 text-xl text-center pt-3 ">
+                        Stock : <?php echo $car['stock'] ;?>
+                    </p>
+    
+                    <form class="text-white flex justify-around my-3" action="#">
 
-                <h1 class="text-center text-2xl font-bold">
-                    Car Name
-                </h1>
-
-                <img src="/images/hiyunda.jpg" class="w-full rounded" alt="car image">
-
-                <p class="text-green-500 text-xl text-center pt-3 ">
-                    Stock : 32 
-                </p>
-
-                <form class="text-white flex justify-around my-3">
-
-                    <button class="bg-blue-400 p-2 rounded w-28">
-                        <a href="cardetails.php"> Details </a>
-                    </button>
-                    <button class="bg-green-400 p-2 rounded w-28">
-                        <a href="rent.php"> Rent </a>
-                    </button>
-
-                </form>
-                
-
-            </div>
+                        <input type='hidden' name='carid' value="carid" >
+    
+                        <button class="bg-blue-400 p-2 rounded w-28" name='details' type="submit">
+                            <!-- 
+                                <a href="rent.php"> Details </a>
+                            -->
+                            Details
+                        </button>
+                        <button class="bg-green-400 p-2 rounded w-28" name='submit' type="submit">
+                            <!-- 
+                                <a href="rent.php"> Rent </a>
+                            -->
+                            Rent
+                        </button>
+    
+                    </form>
+                    
+    
+                </div>
+                <?php endwhile ?>
         </main>
         
     </body>
